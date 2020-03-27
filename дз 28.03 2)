@@ -1,0 +1,26 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+char* str_chr(char* s, char c)
+{
+    int i;
+    for(i = 0; s[i] != 0; i++)
+        if(s[i] == c) return &s[i];
+    return 0;
+}
+
+int main()
+{
+    char a[31] = { 0 }, b;
+
+    printf("\nDano:");
+    gets(a);
+    printf("\nDano char:");
+    b = getchar();
+
+    if(str_chr(a, b) != 0)
+        printf("\nYour char: %d", str_chr(a, b));
+    else
+        printf("\nError");
+    return 0;
+}
