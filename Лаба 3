@@ -1,0 +1,248 @@
+#include <stdio.h>
+#include <windows.h>
+#include <conio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+
+
+void strelka_New_Game()
+{
+    COORD position;
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    while(1)
+    {
+        char prikaz;
+        position.X = 0;
+        position.Y = 0;
+        SetConsoleCursorPosition(hConsole, position);
+        SetConsoleTextAttribute(hConsole, (WORD) ((1 << 4) | 1));
+        prikaz = getche();
+        SetConsoleTextAttribute(hConsole, (WORD) ((1 << 4) | 14));
+        printf("\b ");
+        switch(prikaz)
+        {
+            case 's':{
+                position.X = 26;
+                position.Y = 3;
+                SetConsoleCursorPosition(hConsole, position);
+                printf("\b   ");
+                position.X = 26;
+                position.Y = 4;
+                SetConsoleCursorPosition(hConsole, position);
+                printf("->");
+                strelka_Setting();
+            }
+
+            case 'w': {
+                position.X = 26;
+                position.Y = 3;
+                SetConsoleCursorPosition(hConsole, position);
+                printf("\b   ");
+                position.X = 26;
+                position.Y = 5;
+                SetConsoleCursorPosition(hConsole, position);
+                printf("->");
+                strelka_Exit();
+            }
+
+            case ' ': new_game();
+        }
+    }
+}
+
+void strelka_Setting()
+{
+    COORD position;
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    while(1)
+    {
+        char prikaz;
+        position.X = 0;
+        position.Y = 0;
+        SetConsoleCursorPosition(hConsole, position);
+        SetConsoleTextAttribute(hConsole, (WORD) ((1 << 4) | 1));
+        prikaz = getche();
+        SetConsoleTextAttribute(hConsole, (WORD) ((1 << 4) | 14));
+        printf("\b ");
+        switch(prikaz)
+        {
+            case 'w':{
+                position.X = 26;
+                position.Y = 4;
+                SetConsoleCursorPosition(hConsole, position);
+                printf("\b   ");
+                position.X = 26;
+                position.Y = 3;
+                SetConsoleCursorPosition(hConsole, position);
+                printf("->");
+                strelka_New_Game();
+            }
+
+            case 's':{
+                position.X = 26;
+                position.Y = 4;
+                SetConsoleCursorPosition(hConsole, position);
+                printf("\b   ");
+                position.X = 26;
+                position.Y = 5;
+                SetConsoleCursorPosition(hConsole, position);
+                printf("->");
+                strelka_Exit();
+            }
+        }
+    }
+}
+
+void strelka_Exit()
+{
+    COORD position;
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    while(1)
+    {
+        char prikaz;
+        position.X = 0;
+        position.Y = 0;
+        SetConsoleCursorPosition(hConsole, position);
+        SetConsoleTextAttribute(hConsole, (WORD) ((1 << 4) | 1));
+        prikaz = getche();
+        SetConsoleTextAttribute(hConsole, (WORD) ((1 << 4) | 14));
+        printf("\b ");
+        switch(prikaz)
+        {
+            case 'w':{
+                position.X = 26;
+                position.Y = 5;
+                SetConsoleCursorPosition(hConsole, position);
+                printf("\b   ");
+                position.X = 26;
+                position.Y = 4;
+                SetConsoleCursorPosition(hConsole, position);
+                printf("->");
+                strelka_Setting();
+            }
+
+            case 's':{
+                position.X = 26;
+                position.Y = 5;
+                SetConsoleCursorPosition(hConsole, position);
+                printf("\b   ");
+                position.X = 26;
+                position.Y = 3;
+                SetConsoleCursorPosition(hConsole, position);
+                printf("->");
+                strelka_New_Game();
+            }
+
+            case ' ': {
+                position.X = 0;
+                position.Y = 10;
+                SetConsoleCursorPosition(hConsole, position);
+                exit(0);
+            }
+        }
+    }
+}
+
+int main()
+{
+    char title[] = " TETRIS ";
+    CharToOem(title, title);
+    SetConsoleTitle(title);
+    COORD position;
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    system("color 1E");
+    position.X = 32;
+    position.Y = 2;
+    SetConsoleCursorPosition(hConsole, position);
+    SetConsoleTextAttribute(hConsole, (WORD) ((1 << 4) | 4));
+    printf("T");
+    SetConsoleTextAttribute(hConsole, (WORD) ((1 << 4) | 2));
+    printf("E");
+    SetConsoleTextAttribute(hConsole, (WORD) ((1 << 4) | 14));
+    printf("T");
+    SetConsoleTextAttribute(hConsole, (WORD) ((1 << 4) | 5));
+    printf("R");
+    SetConsoleTextAttribute(hConsole, (WORD) ((1 << 4) | 13));
+    printf("I");
+    SetConsoleTextAttribute(hConsole, (WORD) ((1 << 4) | 11));
+    printf("S");
+    SetConsoleTextAttribute(hConsole, (WORD) ((1 << 4) | 14));
+    position.X = 30;
+    position.Y = 3;
+    SetConsoleCursorPosition(hConsole, position);
+    printf("NEW GAMES");
+    position.X = 30;
+    position.Y = 4;
+    SetConsoleCursorPosition(hConsole, position);
+    printf("SETTING");
+    position.X = 30;
+    position.Y = 5;
+    SetConsoleCursorPosition(hConsole, position);
+    printf("EXIT");
+    position.X = 30;
+    position.Y = 7;
+    SetConsoleCursorPosition(hConsole, position);
+    printf("Team Z");
+    position.X = 26;
+    position.Y = 3;
+    SetConsoleCursorPosition(hConsole, position);
+    printf("->");
+    strelka_New_Game();
+}
+
+void new_game()
+{
+    COORD position;
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    position.X = 24;
+    position.Y = 2;
+    SetConsoleCursorPosition(hConsole, position);
+    printf("                 ");
+    position.X = 24;
+    position.Y = 3;
+    SetConsoleCursorPosition(hConsole, position);
+    printf("                 ");
+    position.X = 24;
+    position.Y = 4;
+    SetConsoleCursorPosition(hConsole, position);
+    printf("                 ");
+    position.X = 24;
+    position.Y = 5;
+    SetConsoleCursorPosition(hConsole, position);
+    printf("                 ");
+    position.X = 24;
+    position.Y = 7;
+    SetConsoleCursorPosition(hConsole, position);
+    printf("                 ");
+    position.X = 4;
+    position.Y = 2;
+    SetConsoleCursorPosition(hConsole, position);
+    int i, j;
+
+    char n[21][20]={ '  ','  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ','  ','  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '};
+    for (i = 0; i < 20; ++i){
+        for (j = 0; j < 20; ++j){
+            SetConsoleTextAttribute(hConsole, (WORD) ((0 << 4) | 4));
+            printf("%c", n[i][j]);
+        }
+    SetConsoleTextAttribute(hConsole, (WORD) ((1 << 4) | 14));
+    printf("\n    ");
+    }
+
+    time_t tmp1, tmp2, tmpf;
+    int t = 1;
+    time(&tmp1);
+    tmpf=tmp1;
+    while(1){
+        position.X = 30;
+        position.Y = 3;
+        SetConsoleCursorPosition(hConsole, position);
+        time(&tmp2);
+        if (difftime(tmp2, tmp1) >= t){
+            tmp1=tmp2-1;
+            printf("%5d", tmp2-tmpf);
+        }
+    }
+return 0;
+}
